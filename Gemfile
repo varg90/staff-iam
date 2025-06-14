@@ -45,11 +45,13 @@ gem "dry-system"
 gem "dry-validation"
 
 group :development, :test do
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "brakeman", require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "factory_bot_rails"
+  gem "rspec-rails"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -61,8 +63,8 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails"
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "rspec-rails"
   gem "selenium-webdriver"
+  gem "test-prof"
 end
