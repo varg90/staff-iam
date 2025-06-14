@@ -40,7 +40,6 @@ gem "tailwindcss-rails"
 
 # Dry Ruby [https://dry-rb.org]
 gem "dry-monads"
-gem "dry-container"
 gem "dry-system"
 gem "dry-validation"
 
@@ -51,7 +50,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   gem "factory_bot_rails"
-  gem "rspec-rails"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false

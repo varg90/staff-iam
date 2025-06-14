@@ -1,0 +1,27 @@
+<% if class_path.any? -%>
+# frozen_string_literal: true
+
+module <%= class_path.map(&:camelize).join("::") %>
+  class <%= file_name.camelize %>
+    include Dry::Monads[:result]
+
+    # @param params [Hash]
+    #
+    # @return [Dry::Monads::Result]
+    def call(params:)
+    end
+  end
+end
+<% else -%>
+# frozen_string_literal: true
+
+class <%= file_name.camelize %>
+  include Dry::Monads[:result]
+
+  # @param params [Hash]
+  #
+  # @return [Dry::Monads::Result]
+  def call(params:)
+  end
+end
+<% end -%>
