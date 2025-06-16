@@ -16,7 +16,11 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt"
+# Use Warden for sessions [https://github.com/wardencommunity/warden]
+gem "warden"
+# Some grease for including Warden [https://github.com/wardencommunity/rails_warden]
+gem "rails_warden", github: "wardencommunity/rails_warden"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"

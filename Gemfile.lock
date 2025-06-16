@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/wardencommunity/rails_warden.git
+  revision: 7eff908311ce92e1e6292ef651505085e3bdbaaf
+  specs:
+    rails_warden (1.0.0)
+      rails (>= 5)
+      warden (>= 1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -411,6 +419,8 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -438,7 +448,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt
   brakeman
   capybara
   debug
@@ -452,6 +462,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rails_warden!
   rspec-rails
   rubocop-rails-omakase
   selenium-webdriver
@@ -463,6 +474,7 @@ DEPENDENCIES
   test-prof
   thruster
   turbo-rails
+  warden
   web-console
 
 BUNDLED WITH

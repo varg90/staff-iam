@@ -49,8 +49,11 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    params[:id] = 1 if request.path == profile_path
-    @user = User.find(params.expect(:id))
+    if request.path == profile_path || params[:id].blank?
+      @user = user
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   # Only allow a list of trusted parameters through.
