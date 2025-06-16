@@ -14,11 +14,13 @@ class ApplicationController < ActionController::Base
   private
 
   def temp_set_user
+    return if user
+
     admin = User.first or raise "Create admin user to run this app"
-    login!(admin)
+    login!(admin, scope: :user)
   end
 
   def check_authorization
-    authenticated? || head(:unauthorized)
+    authenticate!
   end
 end
