@@ -1,8 +1,131 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# rubocop 1.72+ replaced `require` with `plugins` system,
+# though `require` still works, while `plugins` requires plugin support from the extension.
+plugins:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-thread_safety
+require:
+  - test_prof/rubocop
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  NewCops: enable
+  AutoCorrect: false
+  TargetRubyVersion: 3.4
+  Exclude:
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+Layout/LineLength:
+  Max: 100
+Layout/SpaceInsideHashLiteralBraces:
+  # `{ a: { b: 1 }}` instead of `{ a: { b: 1 } }`
+  EnforcedStyle: compact
+
+Metrics:
+  Severity: refactor
+Metrics/AbcSize:
+  # Default of 17 makes even completely reasonable code not pass the branch metric.
+  Max: 20
+  # Repeated calls to "attributes", like `product.model` are counted once.
+  CountRepeatedAttributes: false
+Metrics/BlockLength:
+  # These files mostly consist of DSL in blocks, no point in counting.
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'config/system/**/*'
+    - Rakefile
+  # Count all compound statements as one for convenience.
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+Metrics/BlockNesting:
+  # Default is 3, which is too much. Two nested `if`s are enough.
+  Max: 2
+Metrics/MethodLength:
+  # Similar to AbcSize, default of 10 is very short and is nonsense anyway.
+  Max: 20
+
+Naming/VariableNumber:
+  # We prefer this style.
+  EnforcedStyle: snake_case
+  AllowedPatterns:
+    - '(?:\A|_)v\d+\z' # v1 / api_v1
+
+Style/Documentation:
+  # Most of the time, documentation is not that important.
+  Enabled: false
+Style/HashSyntax:
+  # Always `symbol:` syntax or `"key" => value, :symbol => value` syntax.
+  EnforcedStyle: ruby19_no_mixed_keys
+  # Should be "consistent" or "either_consistent", considering EnforcedStyle, but default "always" is simpler.
+  # EnforcedShorthandSyntax: either_consistent
+Style/Lambda:
+  # Always use literals instead of blocks on multiline.
+  EnforcedStyle: literal
+Style/NumberedParametersLimit:
+  # Two are readable, this is useful for Hashes and some Enumerable methods.
+  Max: 2
+Style/NumericLiterals:
+  # 10000 is readable (and good for port numbers), 100000 is not.
+  MinDigits: 6
+Style/OptionHash:
+  # No reason to use hashes instead of keywords (in most cases).
+  Enabled: true
+Style/StringLiterals:
+  # Double quotes are much simpler: apostrophes, interpolation, escapes can be used freely.
+  EnforcedStyle: double_quotes
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+RSpec/BeNil:
+  # Symmetry with `be true` / `be false` and other literals.
+  EnforcedStyle: be
+RSpec/ChangeByZero:
+  # Sadly, this is not a default matcher, so we need to specify it.
+  NegatedMatcher: not_change
+RSpec/ContextWording:
+  # Enhanced with "and" and "if".
+  Prefixes:
+    - and
+    - if
+    - when
+    - with
+    - without
+RSpec/DescribeClass:
+  Exclude:
+    # Allow tests for non-classes in root spec directory.
+    - 'spec/*_spec.rb'
+RSpec/ExampleLength:
+  # Code should know its bounds.
+  Max: 10
+  # Count all compound statements as one for convenience.
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+RSpec/ExampleWording:
+  DisallowedExamples:
+    - works
+    - happy path
+    - success
+RSpec/IndexedLet:
+  # Do not abuse this, or I will find and kill you.
+  Max: 2
+RSpec/MultipleExpectations:
+  # We have many tests with multiple expectations without aggregate_failures, and it's fine.
+  Max: 4
+RSpec/MultipleMemoizedHelpers:
+  # Pretty much the same, we use `let` extensively.
+  Max: 10
+RSpec/NestedGroups:
+  # With default max of 3 and no allowed groups,
+  # it becomes impossible to nest contexts when describing a method.
+  # And we love nested contexts!
+  AllowedGroups:
+    - describe
