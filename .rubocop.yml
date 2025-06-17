@@ -17,6 +17,7 @@ AllCops:
   Exclude:
     - 'tmp/**/*'
     - 'vendor/**/*'
+    - db/*schema.rb
 
 Layout/LineLength:
   Max: 100
