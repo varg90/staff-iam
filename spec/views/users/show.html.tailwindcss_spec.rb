@@ -1,11 +1,11 @@
 RSpec.describe "users/show", type: :view do
-  before(:each) do
+  before do
     assign(:user, User.create!(
-      email: "Email",
-      password_digest: "Password Digest",
-      role: "Role",
-      login_code: "Login Code"
-    ))
+                    email: "Email",
+                    password_digest: "Password Digest",
+                    role: "Role",
+                    login_code: "Login Code"
+                  ))
   end
 
   it "renders attributes in <p>" do

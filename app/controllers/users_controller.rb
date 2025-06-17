@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users
   def index
@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  def show
-  end
+  def show; end
 
   # GET /users/new
   def new
@@ -16,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   def create
@@ -49,15 +47,15 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    if request.path == profile_path || params[:id].blank?
-      @user = user
-    else
-      @user = User.find(params[:id])
-    end
+    @user = if request.path == profile_path || params[:id].blank?
+              user
+            else
+              User.find(params[:id])
+            end
   end
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.expect(user: [ :email, :password_digest, :role, :login_code, :login_code_sent_at ])
+    params.expect(user: %i[email password_digest role login_code login_code_sent_at])
   end
 end
