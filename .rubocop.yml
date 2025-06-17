@@ -15,12 +15,16 @@ AllCops:
   AutoCorrect: false
   TargetRubyVersion: 3.4
   Exclude:
-    - 'tmp/**/*'
-    - 'vendor/**/*'
+    # Generated files.
+    - bin/*
+    - tmp/**/*
+    - vendor/**/*
     - db/*schema.rb
 
 Layout/LineLength:
   Max: 100
+  Exclude:
+    - Gemfile
 Layout/SpaceInsideHashLiteralBraces:
   # `{ a: { b: 1 }}` instead of `{ a: { b: 1 } }`
   EnforcedStyle: compact
@@ -100,7 +104,10 @@ RSpec/ContextWording:
 RSpec/DescribeClass:
   Exclude:
     # Allow tests for non-classes in root spec directory.
-    - 'spec/*_spec.rb'
+    - spec/*spec.rb
+    # Allow non-class tests.
+    - spec/views/**/*spec.rb
+    - spec/requests/**/*spec.rb
 RSpec/ExampleLength:
   # Code should know its bounds.
   Max: 10
