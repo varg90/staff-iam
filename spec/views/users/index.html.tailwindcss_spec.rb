@@ -1,4 +1,6 @@
-RSpec.describe "users/index", type: :view do
+# frozen_string_literal: true
+
+RSpec.describe "users/index" do
   before do
     assign(:users, [
              User.create!(

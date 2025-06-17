@@ -1,4 +1,6 @@
-RSpec.describe "users/new", type: :view do
+# frozen_string_literal: true
+
+RSpec.describe "users/new" do
   before do
     assign(:user, User.new(
                     email: "MyString",

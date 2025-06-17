@@ -1,4 +1,6 @@
-RSpec.describe "users/edit", type: :view do
+# frozen_string_literal: true
+
+RSpec.describe "users/edit" do
   let(:user) do
     User.create!(
       email: "MyString",

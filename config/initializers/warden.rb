@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Warden::Strategies.add(:password) do
   def valid?
     params["login"] || params["password"]
