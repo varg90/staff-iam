@@ -2,7 +2,8 @@ Description:
     Explain the generator
 
 Example:
-    bin/rails generate service Thing
+    bin/rails generate service Thang::Thing
 
     This will create:
-        what/will/it/create
+      app/services/thang/thing.rb
+      app/services/thang/contracts/thing_contract.rb
