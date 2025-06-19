@@ -43,8 +43,9 @@ gem "tailwindcss-rails"
 
 # Dry Ruby [https://dry-rb.org]
 gem "dry-monads"
-gem "dry-system"
 gem "dry-validation"
+# Integration of Dry::System with Rails
+gem "dry-rails"
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
