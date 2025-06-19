@@ -55,6 +55,8 @@ group :development, :test do
 
   # Generation of test data for models.
   gem "factory_bot_rails"
+  # Generation of RSpec tests (and test integration).
+  gem "rspec-rails"
 
   gem "rubocop-capybara"
   gem "rubocop-factory_bot"
@@ -72,7 +74,7 @@ group :development do
 end
 
 group :test do
+  # Browser testing support.
   gem "capybara"
-  gem "rspec-rails"
   gem "selenium-webdriver"
 end
