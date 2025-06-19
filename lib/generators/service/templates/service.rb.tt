@@ -2,11 +2,10 @@
 # frozen_string_literal: true
 
 module <%= class_path.map(&:camelize).join("::") %>
-  class <%= file_name.camelize %>
-    include Dry::Monads[:result]
+  class <%= file_name.camelize %> < ApplicationService
+    include StaffIam::Deps[contract: "<%= class_path.join(".") %>.contracts.<%= file_name %>_contract"]
 
     # @param params [Hash]
-    #
     # @return [Dry::Monads::Result]
     def call(params:)
     end
@@ -15,11 +14,8 @@ end
 <% else -%>
 # frozen_string_literal: true
 
-class <%= file_name.camelize %>
-  include Dry::Monads[:result]
-
+class <%= file_name.camelize %> < ApplicationService
   # @param params [Hash]
-  #
   # @return [Dry::Monads::Result]
   def call(params:)
   end

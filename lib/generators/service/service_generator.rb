@@ -15,7 +15,8 @@ class ServiceGenerator < Rails::Generators::NamedBase
   end
 
   def contract_path
-    File.join("app/contracts", class_path, "#{file_name}_contract.rb")
+    # Maybe remove "contracts"?
+    File.join("app/services", class_path, "contracts", "#{file_name}_contract.rb")
   end
 
   def module_names

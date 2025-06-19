@@ -4,10 +4,12 @@
 <% module_names.each do |mod| -%>
 module <%= mod %>
 <% end -%>
-  class <%= file_name.camelize %>Contract < BaseContract
-    params do
-      # required(:email).filled(:string)
-      # optional(:age).maybe(:integer)
+  module Contracts
+    class <%= file_name.camelize %>Contract < ApplicationContract
+      params do
+        # required(:email).filled(:string)
+        # optional(:age).maybe(:integer)
+      end
     end
   end
 <% module_names.count.times do -%>
