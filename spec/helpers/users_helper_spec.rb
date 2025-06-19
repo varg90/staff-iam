@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Specs in this file have access to a helper object that includes
 # the UsersHelper. For example:
 #
@@ -8,6 +10,6 @@
 #     end
 #   end
 # end
-RSpec.describe UsersHelper, type: :helper do
+RSpec.describe UsersHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

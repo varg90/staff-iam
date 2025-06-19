@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Warden::Strategies.add(:password) do
   def valid?
     params["login"] || params["password"]
@@ -9,9 +11,10 @@ Warden::Strategies.add(:password) do
         user.authenticate(params["password"])
       else
         # Compare to a completely random password to waste time and prevent timing-based attacks.
-        BCrypt::Password.new("$2a$12$r.d.0EcomoBScMpE75pFGeAcd0MM2wYiFRRm7W4KTP0E7NbP61T1a") ==
+        result =
+          BCrypt::Password.new("$2a$12$r.d.0EcomoBScMpE75pFGeAcd0MM2wYiFRRm7W4KTP0E7NbP61T1a") ==
           params["password"]
-        false
+        result && false
       end
 
     if access_granted
@@ -23,9 +26,9 @@ Warden::Strategies.add(:password) do
 end
 
 Rails.configuration.middleware.use RailsWarden::Manager do |manager|
-  manager.failure_app = Proc.new { |_env|
-    [ "401", { "Content-Type" => "text/plain" }, "🖕" ]
-  }
+  manager.failure_app = proc do |_env|
+    ["401", { "Content-Type" => "text/plain" }, "🖕"]
+  end
   manager.default_strategies :password # needs to be defined
   manager.default_scope = :user # optional default scope
   # Optional Settings (see Warden wiki)

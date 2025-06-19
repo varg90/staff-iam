@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -23,9 +25,9 @@ gem "warden"
 gem "rails_warden", github: "wardencommunity/rails_warden"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
-gem "solid_cable"
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
@@ -48,12 +50,19 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 
+  # Generation of test data for models.
   gem "factory_bot_rails"
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
+  gem "rubocop-capybara"
+  gem "rubocop-factory_bot"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
+  gem "rubocop-rspec_rails"
+  gem "rubocop-thread_safety"
+  gem "test-prof"
 end
 
 group :development do
@@ -65,5 +74,4 @@ group :test do
   gem "capybara"
   gem "rspec-rails"
   gem "selenium-webdriver"
-  gem "test-prof"
 end
