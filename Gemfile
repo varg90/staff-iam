@@ -43,11 +43,6 @@ gem "tailwindcss-rails"
 
 # ENV variables in .env [https://github.com/bkeepers/dotenv]
 gem "dotenv-rails"
-
-# Use Redis for Action Cable [https://github.com/redis/redis-rb]
-# Use stable version of Redis for Rails 8
-gem "redis", "~> 4.6"
-
 # Dry Ruby [https://dry-rb.org]
 gem "dry-monads"
 gem "dry-validation"
