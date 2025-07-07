@@ -41,6 +41,8 @@ gem "tailwindcss-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# ENV variables in .env [https://github.com/bkeepers/dotenv]
+gem "dotenv-rails"
 # Dry Ruby [https://dry-rb.org]
 gem "dry-monads"
 gem "dry-validation"
@@ -71,6 +73,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Code formatter
+  gem "syntax_tree", require: false
 end
 
 group :test do
