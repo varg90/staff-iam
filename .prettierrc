@@ -1,0 +1,7 @@
+{
+  "singleQuote": false,
+  "printWidth": 80,
+  "bracketSpacing": true,
+  "bracketSameLine": true,
+  "plugins": ["@prettier/plugin-ruby"]
+}
