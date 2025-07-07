@@ -482,7 +482,6 @@ DEPENDENCIES
   importmap-rails
   kamal
   pg (~> 1.5)
-  prettier_print
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)

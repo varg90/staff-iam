@@ -75,7 +75,6 @@ group :development do
   gem "web-console"
 
   # Code formatter
-  gem "prettier_print", require: false
   gem "syntax_tree", require: false
 end
 
