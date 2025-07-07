@@ -41,6 +41,13 @@ gem "tailwindcss-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# ENV variables in .env [https://github.com/bkeepers/dotenv]
+gem "dotenv-rails"
+
+# Use Redis for Action Cable [https://github.com/redis/redis-rb]
+# Use stable version of Redis for Rails 8
+gem "redis", "~> 4.6"
+
 # Dry Ruby [https://dry-rb.org]
 gem "dry-monads"
 gem "dry-validation"
@@ -71,6 +78,10 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Code formatter
+  gem "prettier_print", require: false
+  gem "syntax_tree", require: false
 end
 
 group :test do
