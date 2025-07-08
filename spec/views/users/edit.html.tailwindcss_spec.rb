@@ -4,9 +4,7 @@ RSpec.describe "users/edit" do
   let(:user) do
     User.create!(
       email: "MyString",
-      password_digest: "MyString",
-      role: "MyString",
-      login_code: "MyString"
+      password: "MyString"
     )
   end
 
@@ -19,9 +17,7 @@ RSpec.describe "users/edit" do
 
     assert_select "form[action=?][method=?]", user_path(user), "post" do
       assert_select "input[name=?]", "user[email]"
-      assert_select "input[name=?]", "user[password_digest]"
-      assert_select "input[name=?]", "user[role]"
-      assert_select "input[name=?]", "user[login_code]"
+      assert_select "input[name=?]", "user[password]"
     end
   end
 end

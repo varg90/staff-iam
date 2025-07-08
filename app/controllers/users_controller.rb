@@ -58,6 +58,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.expect(user: %i[email password_digest role login_code login_code_sent_at])
+    params.expect(user: %i[email password])
   end
 end
