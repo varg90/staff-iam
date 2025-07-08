@@ -24,25 +24,27 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: "User was successfully created."
+      redirect_to @user, notice: t(".success")
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, error: t(".failure")
     end
   end
 
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "User was successfully updated.", status: :see_other
+      redirect_to @user, status: :see_other, notice: t(".success")
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, error: t(".failure")
     end
   end
 
   # DELETE /users/1
   def destroy
     @user.destroy!
-    redirect_to users_path, notice: "User was successfully destroyed.", status: :see_other
+    redirect_to users_path, status: :see_other, notice: t(".success")
+  rescue ActiveRecord::ActiveRecordError
+    redirect_to users_path, status: :see_other, alert: t(".failure")
   end
 
   private
