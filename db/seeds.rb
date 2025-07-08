@@ -11,3 +11,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+iam = TrackedService.create!(
+  name: Rails.application.class.module_parent,
+  comment: "IAM service (this one!)",
+  data: { url: "http://localhost:3000" }
+)
+admin = User.create!(
+  email: "admin@localhost",
+  password: "password",
+  role: "admin"
+)
+AuthEntity.create!(
+  user: admin,
+  tracked_service: iam,
+  identifier: "admin",
+  access_level: admin.role
+)
