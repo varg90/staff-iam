@@ -19,12 +19,11 @@ iam = TrackedService.create!(
 )
 admin = User.create!(
   email: "admin@localhost",
-  password: "password",
-  role: "admin"
+  password: "admin"
 )
 AuthEntity.create!(
   user: admin,
   tracked_service: iam,
   identifier: "admin",
-  access_level: admin.role
+  access_level: "admin"
 )

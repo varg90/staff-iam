@@ -13,6 +13,9 @@ class CreateAuthEntities < ActiveRecord::Migration[8.0]
       t.string :comment
       t.column :data, :jsonb, null: false, default: "{}", comment: "Custom extra data"
       t.timestamps
+
+      # Index includes identifier as a person can have several accounts on the same service
+      t.index %i[user_id tracked_service_id identifier], unique: true
     end
   end
 end
