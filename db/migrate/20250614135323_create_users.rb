@@ -3,9 +3,8 @@
 class CreateUsers < ActiveRecord::Migration[8.0]
   def change
     create_table :users do |t|
-      t.string :email
+      t.string :email, comment: "User's contact email"
       t.string :password_digest
-      t.string :role
       t.string :login_code
       t.datetime :login_code_sent_at
 
