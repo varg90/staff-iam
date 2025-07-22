@@ -30,6 +30,11 @@ Layout/SpaceInsideHashLiteralBraces:
   # `{ a: { b: 1 }}` instead of `{ a: { b: 1 } }`
   EnforcedStyle: compact
 
+Lint/UnusedMethodArgument:
+  Exclude:
+    # Exclude interface definitions.
+    - "**/i_*.rb"
+
 Metrics:
   Severity: refactor
 Metrics/AbcSize:
@@ -62,6 +67,9 @@ Naming/VariableNumber:
   AllowedPatterns:
     - '(?:\A|_)v\d+\z' # v1 / api_v1
 
+Style/CaseEquality:
+  # It's a completely valid method to call.
+  Enabled: false
 Style/Documentation:
   # Most of the time, documentation is not that important.
   Enabled: false

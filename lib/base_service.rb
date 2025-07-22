@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class ApplicationService
+class BaseService
+  extend Dry::Initializer
   include Dry::Monads[:do, :result, :maybe, :try]
 
   def call(*)
