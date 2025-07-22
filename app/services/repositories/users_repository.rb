@@ -4,7 +4,7 @@ module Repositories
   class UsersRepository
     include ::Users::IUserRepository
 
-    def find_or_creates(user:)
+    def find_or_create(user:)
       record =
         ::Database::User.find_or_create_by!(email: user.email) do |u|
           u.assign_attributes(user.to_h)

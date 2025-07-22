@@ -84,6 +84,6 @@ end
 
 group :test do
   # Browser testing support.
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem "capybara", require: false
+  gem "selenium-webdriver", require: false
 end
