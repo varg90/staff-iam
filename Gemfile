@@ -43,11 +43,15 @@ gem "tailwindcss-rails"
 
 # ENV variables in .env [https://github.com/bkeepers/dotenv]
 gem "dotenv-rails"
-# Dry Ruby [https://dry-rb.org]
-gem "dry-monads"
-gem "dry-validation"
 # Integration of Dry::System with Rails
 gem "dry-rails"
+
+# Dry Ruby [https://dry-rb.org]
+gem "dry-auto_inject"
+gem "dry-core"
+gem "dry-monads"
+gem "dry-struct"
+gem "dry-validation"
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]

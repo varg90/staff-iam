@@ -1,0 +1,5 @@
+en:
+  policies:
+    user_email_policy:
+      policy_failed: "Unauthorized email domain for %{email}"
+      
